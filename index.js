@@ -1,15 +1,14 @@
-// const choices = { rock: 0, paper: 1, scissors: 2};
+const choiceNames = ["rock", "paper", "scissors"];
+
 function getComputerChoice() {
-  return Math.floor(Math.random() * 3);
+  return choiceNames[Math.floor(Math.random() * 3)];
 }
 
 function getHumanChoice() {
-  let humanChoice = prompt('Please enter either "0 for rock," "1 for paper," or "2 for scissors"')
+  let humanChoice = prompt('Please enter either "rock," "paper," or "scissors"')
    console.log(`You entered: ${humanChoice}`);
-  return Number(humanChoice);
+  return (humanChoice);
 }
-
-
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
@@ -18,15 +17,20 @@ console.log(`Your opponent entered: ${computerSelection}`)
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice){
     console.log("It's a tie!");
-  } else if (( computerChoice ===  0 && humanChoice === 1) || 
-           (computerChoice === 1 && humanChoice === 2) || 
-           (computerChoice === 2 &&  humanChoice === 0)) {
+  } else if (( computerChoice ===  "rock" && humanChoice === "paper") || 
+           (computerChoice === "paper" && humanChoice === "scissors") || 
+           (computerChoice === "scissors" &&  humanChoice === "rock")) {
     console.log("You win!");
   } else {
     console.log("You lose!");
   }
 }
 
-
-
 playRound(humanSelection, computerSelection);
+
+// To-do:
+// Add a function to validate the input
+// Change numbers to strings
+// Play 5 rounds
+// Add a function to keep track of score
+// Add a function to display final score      
