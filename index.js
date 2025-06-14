@@ -10,7 +10,7 @@ function getHumanChoice() {
   return (humanChoice);
 }
 
-const humanSelection = getHumanChoice();
+const humanSelection = getHumanChoice().toLowerCase().trim();
 const computerSelection = getComputerChoice();
 console.log(`Your opponent entered: ${computerSelection}`)
 
@@ -30,7 +30,6 @@ playRound(humanSelection, computerSelection);
 
 // To-do:
 // Add a function to validate the input
-// Change numbers to strings
 // Play 5 rounds
 // Add a function to keep track of score
 // Add a function to display final score      
