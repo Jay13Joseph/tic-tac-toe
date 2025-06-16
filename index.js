@@ -1,58 +1,74 @@
+// Declare choices
 const choiceNames = ["rock", "paper", "scissors"];
+  console.log("Welcome to Rock, Paper, Scissors!");
+  console.log("You will be playing against a computer opponent. His name is Ivan!");
 
-humanScore = 0
-computerScore = 0
+// Set initial score values
+let humanScore = 0
+let computerScore = 0
 
+// Get computer choice
 function getComputerChoice() {
   return choiceNames[Math.floor(Math.random() * 3)];
 }
 
+// Get user choice
 function getHumanChoice() {
   let humanChoice = prompt('Please enter either "rock," "paper," or "scissors"')
   return (humanChoice);
 }
 
-const humanSelection = getHumanChoice().toLowerCase().trim();
-const computerSelection = getComputerChoice();
-
-
-
+// Capitalize first letter of inputs
 function capitalizeFirst(str) {
   if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// Play a round
 function playRound(humanChoice, computerChoice) {
    console.log(`You entered: ${humanChoice}`);
-   console.log(`Your opponent entered: ${computerSelection}`)
+   console.log(`Your opponent entered: ${computerChoice}`)
 
   if (humanChoice === computerChoice){
     console.log("It's a tie!");
-  } else if (( computerChoice ===  "rock" && humanChoice === "paper") || 
-           (computerChoice === "paper" && humanChoice === "scissors") || 
-           (computerChoice === "scissors" &&  humanChoice === "rock")) {
+    } else if ((computerChoice ===  "rock" && humanChoice === "paper") || 
+               (computerChoice === "paper" && humanChoice === "scissors") || 
+               (computerChoice === "scissors" &&  humanChoice === "rock")) {
     console.log(`You win! ${capitalizeFirst(humanChoice)} beats ${computerChoice}!`);
-    humanScore += 1;
-  } else {
+    humanScore ++;
+    } else {
     console.log(`You lose! ${capitalizeFirst(computerChoice)} beats ${humanChoice}!`);
-    computerScore += 1;
+    computerScore ++;
+    }
+    console.log(`The score is You: ${humanScore}, Ivan: ${computerScore}`)
   }
-  console.log(`The score is You: ${humanScore}, Ivan: ${computerScore}`)
+
+// Print final score
+function finalScore() {
+  if (humanScore === computerScore) {
+    console.log("It's a tie!");
+    }
+  else if (humanScore > computerScore) {
+    console.log(`You win! The final score is ${humanScore} to ${computerScore}!`);
+    }
+  else {
+    console.log(`You lose! The final score is ${computerScore} to ${humanScore}!`);
+    }
 }
 
+// Play a game. Optimize by using a loop
 function playGame() {
-  console.log("Welcome to Rock, Paper, Scissors!");
-  console.log("You will be playing against a computer opponent. His name is Ivan!");
-  playRound(humanSelection, computerSelection);
-  // playRound(humanSelection, computerSelection);
-  // playRound(humanSelection, computerSelection);
-  // playRound(humanSelection, computerSelection);
-  // playRound(humanSelection, computerSelection);
+    const humanSelection = getHumanChoice().toLowerCase().trim();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection); 
 }
 
-playGame()
-
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
+finalScore();
 // To-do:
-// Play 5 rounds
-// Add a function to keep track of score
-// Add a function to display final score      
+// Validate user input, must be one of three choices.  
+// Improve by using loops for playing rounds and for validating user inputs
